@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7jeecho1vy4t"]
+[gd_scene load_steps=10 format=3 uid="uid://b7jeecho1vy4t"]
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_54h18"]
 [ext_resource type="Script" uid="uid://c3y3x4jndlw66" path="res://scenes/Unit/unit.gd" id="1_i8q7a"]
 [ext_resource type="Resource" uid="uid://0bp5wrrpkqx1" path="res://data/units/jean.tres" id="2_ibc5n"]
+[ext_resource type="Script" uid="uid://dn2qxpbyk7cwl" path="res://components/drag_and_drop.gd" id="4_upu8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54h18"]
 size = Vector2(36, 36)
@@ -37,7 +38,7 @@ stats = ExtResource("2_ibc5n")
 position = Vector2(16, 8)
 texture = ExtResource("1_54h18")
 region_enabled = true
-region_rect = Rect2(96, 96, 32, 32)
+region_rect = Rect2(64, 64, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 8)
@@ -61,3 +62,7 @@ offset_bottom = -11.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ibc5n")
 theme_override_styles/fill = SubResource("StyleBoxFlat_upu8o")
 show_percentage = false
+
+[node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_upu8o")
+target = NodePath("..")
