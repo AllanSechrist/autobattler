@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://bw0f3wr1nkfqd"]
+[gd_scene load_steps=8 format=4 uid="uid://bw0f3wr1nkfqd"]
 
 [ext_resource type="Script" uid="uid://jqumqhdnemls" path="res://scenes/Arena/arena.gd" id="1_8iili"]
 [ext_resource type="TileSet" uid="uid://h6h6k7bcwcca" path="res://scenes/Arena/tileset.tres" id="1_v7qja"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_ghuj1"]
+[ext_resource type="PackedScene" uid="uid://b7jeecho1vy4t" path="res://scenes/Unit/unit.tscn" id="4_3nare"]
 
 [sub_resource type="Curve" id="Curve_8iili"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.241158, 1), 0.0, 0.0, 0, 0, Vector2(0.752412, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -69,6 +70,15 @@ tile_set = ExtResource("1_v7qja")
 
 [node name="Highlight" type="TileMapLayer" parent="GameArea"]
 tile_set = ExtResource("1_v7qja")
+
+[node name="Unit" parent="GameArea" instance=ExtResource("4_3nare")]
+position = Vector2(32, 160)
+
+[node name="Unit2" parent="GameArea" instance=ExtResource("4_3nare")]
+position = Vector2(96, 128)
+
+[node name="Unit3" parent="GameArea" instance=ExtResource("4_3nare")]
+position = Vector2(64, 96)
 
 [node name="Bench" type="TileMapLayer" parent="."]
 position = Vector2(160, 320)
