@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Autobattler"
+run/main_scene="uid://bw0f3wr1nkfqd"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://dds7urr8inbi7"
 
