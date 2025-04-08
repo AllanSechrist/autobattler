@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://oiqrmlnsh54q"]
+
+[ext_resource type="Script" uid="uid://wk6repg2p3if" path="res://data/units/unit_stats.gd" id="1_ivs0p"]
+
+[resource]
+script = ExtResource("1_ivs0p")
+name = "Odin"
+rarity = 2
+gold_cost = 4
+skin_coordinates = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://wk6repg2p3if"

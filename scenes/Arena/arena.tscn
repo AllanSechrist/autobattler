@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bw0f3wr1nkfqd"]
+[gd_scene load_steps=13 format=4 uid="uid://bw0f3wr1nkfqd"]
 
 [ext_resource type="Script" uid="uid://jqumqhdnemls" path="res://scenes/Arena/arena.gd" id="1_8iili"]
 [ext_resource type="TileSet" uid="uid://h6h6k7bcwcca" path="res://scenes/Arena/tileset.tres" id="1_v7qja"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://mq5sj2tvvakx" path="res://components/play_area.gd" id="4_jlv0v"]
 [ext_resource type="Script" uid="uid://crp8fk6bd8ynp" path="res://components/unit_grid.gd" id="5_bydfj"]
 [ext_resource type="Script" uid="uid://dpspc7ces82te" path="res://components/tile_highlighter.gd" id="6_yrien"]
+[ext_resource type="Resource" uid="uid://oiqrmlnsh54q" path="res://data/units/odin.tres" id="8_exr0e"]
 [ext_resource type="Script" uid="uid://doyfs5m6ln0h1" path="res://components/unit_mover.gd" id="8_y5m4u"]
 
 [sub_resource type="Curve" id="Curve_8iili"]
@@ -60,12 +61,13 @@ texture = ExtResource("2_ghuj1")
 lifetime = 6.0
 process_material = SubResource("ParticleProcessMaterial_bydfj")
 
-[node name="GameArea" type="TileMapLayer" parent="." node_paths=PackedStringArray("unit_grid")]
+[node name="GameArea" type="TileMapLayer" parent="." node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 32)
 tile_map_data = PackedByteArray("AAABAAAAAAACAAwAAAAAAAEAAAAAAAwAAAABAAIAAAABAAwAAAAAAAMAAAAAAAwAAAABAAQAAAAAAAwAAAAAAAUAAAAAAAwAAAABAAYAAAADAAwAAAACAAEAAAAAAAwAAAACAAMAAAAAAAwAAAACAAUAAAAAAAwAAAADAAAAAAAAAAwAAAADAAIAAAAAAAwAAAADAAQAAAAAAAwAAAADAAYAAAAAAAwAAAAEAAEAAAAAAAwAAAAEAAMAAAACAAwAAAAEAAUAAAAAAAwAAAAFAAAAAAAAAAwAAAAFAAIAAAAAAAwAAAAFAAQAAAAAAAwAAAAFAAYAAAAAAAwAAAAGAAEAAAADAAwAAAAGAAMAAAAAAAwAAAAGAAUAAAABAAwAAAAHAAAAAAAAAAwAAAAHAAIAAAAAAAwAAAAHAAQAAAACAAwAAAAHAAYAAAAAAAwAAAAIAAEAAAAAAAwAAAAIAAMAAAAAAAwAAAAIAAUAAAAAAAwAAAAJAAAAAAAAAAwAAAAJAAIAAAADAAwAAAAJAAQAAAAAAAwAAAAJAAYAAAAAAAwAAAA=")
 tile_set = ExtResource("1_v7qja")
 script = ExtResource("4_jlv0v")
 unit_grid = NodePath("ArenaUnitGrid")
+tile_highlighter = NodePath("TileHighlighter")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -83,16 +85,18 @@ size = Vector2i(4, 7)
 
 [node name="TileHighlighter" type="Node" parent="GameArea" node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_yrien")
+enabled = false
 play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
 
-[node name="Bench" type="TileMapLayer" parent="." node_paths=PackedStringArray("unit_grid")]
+[node name="Bench" type="TileMapLayer" parent="." node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 320)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAsAAAABAAAAAAAAAAcAAAACAAAAAAAAAAsAAAADAAAAAAAAAAcAAAAEAAAAAAAAAAsAAAAFAAAAAAAAAAcAAAAGAAAAAAAAAAsAAAAHAAAAAAAAAAcAAAAIAAAAAAAAAAsAAAAJAAAAAAAAAAcAAAA=")
 tile_set = ExtResource("1_v7qja")
 script = ExtResource("4_jlv0v")
 unit_grid = NodePath("BenchUnitGrid")
+tile_highlighter = NodePath("TileHighlighter")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -107,6 +111,7 @@ position = Vector2(96, -160)
 
 [node name="Unit3" parent="Bench" instance=ExtResource("4_3nare")]
 position = Vector2(64, -192)
+stats = ExtResource("8_exr0e")
 
 [node name="BenchUnitGrid" type="Node2D" parent="Bench"]
 script = ExtResource("5_bydfj")
@@ -114,6 +119,7 @@ size = Vector2i(10, 1)
 
 [node name="TileHighlighter" type="Node" parent="Bench" node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_yrien")
+enabled = false
 play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)

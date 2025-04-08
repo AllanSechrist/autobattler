@@ -19,6 +19,15 @@ func add_unit(tile: Vector2i, unit: Node) -> void:
 func is_tile_occupied(tile: Vector2i) -> bool:
 	return units[tile] != null
 	
+func remove_unit(tile: Vector2i) -> void:
+	var unit := units[tile] as Node
+	
+	if not unit:
+		return 
+		
+	units[tile] = null
+	unit_grid_changed.emit()
+	
 func is_grid_full() -> bool:
 	return units.keys().all(is_tile_occupied)
 	
